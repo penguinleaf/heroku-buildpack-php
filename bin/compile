@@ -222,10 +222,6 @@ cp $BP_DIR/conf/nginx/nginx.conf.default $BUILD_DIR/.heroku/php/etc/nginx/nginx.
 mkdir -p $BUILD_DIR/.heroku/php/.versions/nginx
 echo $NGINX_VERSION > $BUILD_DIR/.heroku/php/.versions/nginx/nginx
 
-# Install PhalconPHP
-source $BP_DIR/bin/phalcon
-
-
 # handle extensions for PHP
 if [[ "${PHP_VERSION}" ]]; then
     status "Installing PHP extensions..."
@@ -379,6 +375,10 @@ composer() {
 export -f composer
 EOF
 fi
+
+
+# Install PhalconPHP
+source $BP_DIR/bin/phalcon
 
 install_newrelic_daemon
 install_newrelic_userini
